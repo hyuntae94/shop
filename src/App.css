@@ -1,3 +1,7 @@
+body{
+    height: 1200px;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +9,38 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.header{
+    margin: 15px 0px;
+    font-size:15px;
+    font-weight: 300;
+}
+.header span{
+    color:blue;
+    cursor: pointer;
+}
+
+
+.header span:hover{
+    color:blueviolet;
+    text-decoration: underline;
+}
+
+.bg{
+    background-image: url("./shop_bg.png");
+    background-size:cover;
+    color:black;
+}
+
+.bg_title{
+    padding-top: 20px;
+}
+
+.list_title{
+    margin:25px 0px;
+    font-size:30px;
+    font-weight: 600;
 }
 
 @media (prefers-reduced-motion: no-preference) {
