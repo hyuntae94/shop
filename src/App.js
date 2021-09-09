@@ -1,11 +1,14 @@
 /* eslint-disable */
 import './App.css';
+import React, {useState} from "react";
 import { Button,Navbar,Container,Nav,NavDropdown,Jumbotron } from 'react-bootstrap';
+import data from "./data.js";
+import Info from "./item.js";
+
 
 function App() {
 
-  const size = {width:"300px", height:"300px"};
-
+  let [item, item변경] = useState(data)
   return (
     <div className="App">
         <Navbar bg="light" expand="lg">
@@ -41,18 +44,15 @@ function App() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img width="100%" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/947102659458571-e07a9c98-ea3f-4814-b4e6-31261c743183.jpg"></img>
-            <h2>iPhone12Pro</h2>
-          </div>
-          <div className="col-md-4">
-            <img width="100%" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7696374737960-06c26f91-d1ad-45c8-bf34-39ee275d068a.jpg"/>
-            <h2>Apple Watch SE</h2>
-          </div>
-          <div className="col-md-4">
-            <img width="100%" src="https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/872629760195-a8609d2a-6df8-4318-84a2-d6a099c5b09a.jpg"></img>
-            <h2>AirPods</h2>
-          </div>
+          {
+            item.map( el => <Info
+                      key = { el.id }
+                      img = { el.src}
+                      title = { el.title }
+                      content = { el.content }
+                      price = { el.price }
+                      /> )
+          }
         </div>
       </div>
     </div>

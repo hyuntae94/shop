@@ -18,9 +18,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
-    "predeploy" : "npm run build"
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
+    "env": {
+      "jest/globals": true
+    },
     "extends": [
       "react-app",
       "react-app/jest"
@@ -38,6 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://hyuntae94.github.io/shop"
-
+  "homepage": "https://hyuntae94.github.io/shop",
+  "devDependencies": {
+    "eslint-plugin-jest": "^24.4.0"
+  }
 }
