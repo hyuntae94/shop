@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function Detail(props){
     
     let history = useHistory();
-    let { id } = useParams();
+    // let { id } = useParams();
 
     let 박스 = styled.div`
         padding : 20px;
