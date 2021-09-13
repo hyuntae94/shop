@@ -58,18 +58,16 @@ function App() {
           </div>
         </div>
       </Route>
-      <Route path="/iphone">
-        <Detail src={item[0].src} price={item[0].price}/>
+      <Route path="/iphone/">
+        <Detail item={item[0]}/>
       </Route>
       <Route path="/watch">
-        <Detail src={item[1].src} price={item[1].price}/>
+        <Detail item={item[1]}/>
       </Route>
       <Route path="/airpods">
-        <Detail src={item[2].src} price={item[2].price}/>
+        <Detail item={item[2]}/>
       </Route>
-      <Route path="/:id"> 
-        <div>lalalala</div>
-      </Route>
+
     </Switch>
     </div>
 
