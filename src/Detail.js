@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
+import "./Detail.scss";
+
 
 export default function Detail(props){
     
@@ -9,7 +11,6 @@ export default function Detail(props){
 
     let 박스 = styled.div`
         padding : 20px;
-        background-color : red;
     `;
     let 제목 = styled.h4`
         font-size : 25px;
@@ -18,6 +19,9 @@ export default function Detail(props){
 
     return (
         <div className="container">
+            <div className="my-alert">
+                <p>재고가 얼마 남지 않았습니다</p>
+            </div>
             <div className="row">
             <div style={ {marginTop:"20px"}} className="col-md-6">
                 <img src={props.item.src} width="100%" />

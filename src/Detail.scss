@@ -1,0 +1,18 @@
+@mixin ui제목창() {
+    max-width:1500px;
+    width:100%;    
+}
+@mixin ui크기창() {
+    padding:20px;
+    background-color: #eeeeee;
+}
+
+
+.my-alert{
+    @include ui제목창();
+    @include ui크기창();
+}
+
+.my-alert p {
+    margin-bottom: 0;
+}
