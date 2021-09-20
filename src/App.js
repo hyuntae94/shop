@@ -1,6 +1,6 @@
 /* eslint-disable */
 import './App.css';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Button,Navbar,Container,Nav,NavDropdown,Jumbotron } from 'react-bootstrap';
 import data from "./data.js";
 import Info from "./item.js";
@@ -8,8 +8,10 @@ import Detail from "./Detail.js";
 
 import { Link, Route, Switch } from "react-router-dom"
 
-
+  
 function App() {
+  
+
 
   let [item, item변경] = useState(data)
   return (
@@ -20,10 +22,10 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><Link to="/">Home</Link></Nav.Link>
-              <Nav.Link ><Link to="/iphone">iPhone</Link></Nav.Link>
-              <Nav.Link ><Link to="/watch">Watch</Link></Nav.Link>
-              <Nav.Link ><Link to="/airpods">AirPods</Link></Nav.Link>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/iphone">iPhone</Nav.Link>
+              <Nav.Link as={Link} to="/watch">Watch</Nav.Link>
+              <Nav.Link as={Link} to="/airpods">AirPods</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
