@@ -2,7 +2,7 @@ import React, {useEffect, useState}    from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./Detail.scss";
-
+import Remain from "./remain.js"
 
 export default function Detail(props){
 
@@ -41,9 +41,10 @@ export default function Detail(props){
                 <h4 className="pt-5">{props.item.title}</h4>
                 <p>{props.item.content}</p>
                 <p>₩ {props.item.price}</p>
-                <button className="btn btn-danger">주문하기</button> 
+                <button className="btn btn-danger" >주문하기</button> 
                 <button style={{marginLeft:"5px"}} onClick = { () => {history.goBack()} }
                 className="btn btn-danger">뒤로가기</button> 
+                <Remain remain={props.remain}/>
             </div>
             </div>
         </div>

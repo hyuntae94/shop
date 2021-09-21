@@ -5,14 +5,13 @@ import { Button,Navbar,Container,Nav,NavDropdown,Jumbotron } from 'react-bootstr
 import data from "./data.js";
 import Info from "./item.js";
 import Detail from "./Detail.js";
-
+import axios from "axios";
 import { Link, Route, Switch } from "react-router-dom"
 
   
 function App() {
   
-
-
+  let [재고,재고변경] = useState([10,20,30]);
   let [item, item변경] = useState(data)
   return (
     <div className="App">
@@ -55,21 +54,29 @@ function App() {
         <div className="container">
           <div className="row">
             {
-              item.map( (el,idx) => <Info shoes={item[idx]} key={idx}/> )
+              item.map( (el,idx) => <Info  shoes={item[idx]} key={idx}/> )
             }
           </div>
+          <button className="btn btn-primary" onClick={ () => {
+          axios.get("https://codingapple1.github.io/shop/data2.json")
+          .then( res => {
+            item변경([...item, ...res.data])
+          })//성공하면 then()
+          .catch( () => {
+            console.log("실패했습니다.")
+          })//실패하면 catch()
+        }}>더보기</button>
         </div>
       </Route>
       <Route path="/iphone/">
-        <Detail item={item[0]}/>
+        <Detail remain = {재고[0]} 재고변경={재고변경} item={item[0]}/>
       </Route>
       <Route path="/watch">
-        <Detail item={item[1]}/>
+        <Detail remain = {재고[1]} 재고변경={재고변경} item={item[1]}/>
       </Route>
       <Route path="/airpods">
-        <Detail item={item[2]}/>
+        <Detail remain = {재고[2]} 재고변경={재고변경} item={item[2]}/>
       </Route>
-
     </Switch>
     </div>
 
