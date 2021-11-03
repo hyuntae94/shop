@@ -1,14 +1,15 @@
 /* eslint-disable */
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext  } from "react";
 import { Button,Navbar,Container,Nav,NavDropdown,Jumbotron } from 'react-bootstrap';
 import data from "./data.js";
-import Info from "./item.js";
 import Detail from "./Detail.js";
 import axios from "axios";
 import { Link, Route, Switch } from "react-router-dom"
 
-  
+let 재고context = React.createContext();  
+
+
 function App() {
   
   let [재고,재고변경] = useState([10,20,30]);
@@ -52,11 +53,13 @@ function App() {
           어떤 제품이 당신에게 맞을까요?
         </div>
         <div className="container">
-          <div className="row">
-            {
-              item.map( (el,idx) => <Info  shoes={item[idx]} key={idx}/> )
-            }
-          </div>
+          <재고context.Provider value={재고}>
+            <div className="row">
+              {
+                item.map( (el,idx) => <Info  shoes={item[idx]} key={idx}/> )
+              }
+            </div>
+          </재고context.Provider>
           <button className="btn btn-primary" onClick={ () => {
           axios.get("https://codingapple1.github.io/shop/data2.json")
           .then( res => {
@@ -69,13 +72,13 @@ function App() {
         </div>
       </Route>
       <Route path="/iphone/">
-        <Detail remain = {재고[0]} 재고변경={재고변경} item={item[0]}/>
+        <Detail item={item[0]}/>
       </Route>
       <Route path="/watch">
-        <Detail remain = {재고[1]} 재고변경={재고변경} item={item[1]}/>
+        <Detail item={item[1]}/>
       </Route>
       <Route path="/airpods">
-        <Detail remain = {재고[2]} 재고변경={재고변경} item={item[2]}/>
+        <Detail item={item[2]}/>
       </Route>
     </Switch>
     </div>
@@ -83,4 +86,27 @@ function App() {
   );
 }
 
+function Info(props){
+
+  return (
+      <div className="col-md-4">
+          <img width="250px" src={props.shoes.src}></img>
+          <h4 style={ { marginTop: "10px" } }>{props.shoes.title}</h4>
+          <p>{props.shoes.content}</p>
+          <p> ₩ {props.shoes.price} </p>
+          <Product key={props.key}/>
+      </div>
+  )
+}
+
+function Product(props){
+  
+  let 재고 = useContext(재고context);
+  
+  return (
+    <div>
+      <p>남은 재고 상품 : {재고}</p>
+    </div>
+  )
+}
 export default App;
